@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shopapp.R
 import com.example.shopapp.databinding.FragmentMainPageBinding
+import com.example.shopapp.utils.extensions.GridSpacingItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -46,9 +47,11 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
 
 
     fun drawRecyclerView(){
+        val spacingInPixels = resources.getDimensionPixelSize(R.dimen.recycler_view_item_width)
         recyclerview = binding.recyclerView
         adapter =  MainPageFragmentAdapter()
         recyclerview.adapter = adapter
         recyclerview.layoutManager = GridLayoutManager(context,2)
+        recyclerview.addItemDecoration(GridSpacingItemDecoration(2, spacingInPixels, true, 0))
     }
 }
