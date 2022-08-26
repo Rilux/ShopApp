@@ -33,7 +33,7 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
         val view = binding.root
         drawRecyclerView()
         lifecycleScope.launch {
-            viewModel.fetchProducts(5)
+            viewModel.fetchProducts(30)
         }
 
         viewModel.productslist.observe(viewLifecycleOwner, Observer{
