@@ -5,11 +5,11 @@ import androidx.room.*
 @Dao
 interface ProductDao {
     @Query("Select * From product")
-    fun getAllProducts(): List<Product>
+    suspend fun getAllProducts(): List<Product>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(vararg product: List<Product>)
+    suspend fun insertAll( product: Product)
 
     @Delete
-    fun deleteProduct(vararg product: Product)
+    suspend fun deleteProduct(vararg product: Product)
 }

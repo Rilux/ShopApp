@@ -6,18 +6,17 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.shopapp.data.model.product.Productslist
-import com.example.shopapp.data.model.product.ProductslistItem
+import com.example.shopapp.data.local.Product
 import com.example.shopapp.databinding.ItemProductBinding
 import kotlinx.android.synthetic.main.item_product.view.*
 
 
 class MainPageFragmentAdapter :
-    ListAdapter<ProductslistItem, MainPageFragmentAdapter.MainPageFragmentViewHolder>(Comparator()) {
+    ListAdapter<Product, MainPageFragmentAdapter.MainPageFragmentViewHolder>(Comparator()) {
     class MainPageFragmentViewHolder(binding: ItemProductBinding) :
         RecyclerView.ViewHolder(binding.root)
 
-    private var listProducts = emptyList<ProductslistItem>()
+    private var listProducts = emptyList<Product>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainPageFragmentViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -38,22 +37,22 @@ class MainPageFragmentAdapter :
 
     override fun getItemCount(): Int = listProducts.size
 
-    fun setList(list: Productslist) {
+    fun setList(list: List<Product>) {
         listProducts = list
         notifyDataSetChanged()
     }
 
-    class Comparator : DiffUtil.ItemCallback<ProductslistItem>() {
+    class Comparator : DiffUtil.ItemCallback<Product>() {
         override fun areItemsTheSame(
-            oldItem: ProductslistItem,
-            newItem: ProductslistItem
+            oldItem: Product,
+            newItem: Product
         ): Boolean {
             return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(
-            oldItem: ProductslistItem,
-            newItem: ProductslistItem
+            oldItem: Product,
+            newItem: Product
         ): Boolean {
             return oldItem.id == newItem.id
         }
