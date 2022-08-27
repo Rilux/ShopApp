@@ -7,7 +7,6 @@ import com.example.shopapp.repository.MainPageRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.internal.managers.ApplicationComponentManager
 import dagger.hilt.components.SingletonComponent
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -19,7 +18,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object AppModule {
+object NetworkModule {
 
     @Provides
     @Singleton
@@ -27,8 +26,6 @@ object AppModule {
     fun provideMainPageRepository(
         apiService: ApiService
     ): MainPageRepository = MainPageRepositoryImpl(apiService)
-
-
 
     @Provides
     @Singleton
@@ -55,4 +52,5 @@ object AppModule {
             else
                 HttpLoggingInterceptor.Level.NONE
         )
+
 }

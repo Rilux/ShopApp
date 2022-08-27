@@ -1,19 +1,14 @@
 package com.example.shopapp.ui.main
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.annotation.Nullable
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import coil.load
 import com.bumptech.glide.Glide
-import com.bumptech.glide.RequestBuilder
 import com.example.shopapp.data.model.product.Productslist
 import com.example.shopapp.data.model.product.ProductslistItem
 import com.example.shopapp.databinding.ItemProductBinding
-import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.android.synthetic.main.item_product.view.*
 
 
@@ -37,7 +32,7 @@ class MainPageFragmentAdapter :
             .into(holder.itemView.productImageView)
 
         holder.itemView.productNameTextView.text = product.title
-        holder.itemView.priceTextView.text = product.price.toString()
+        holder.itemView.priceTextView.text = product.price.toString() + "$"
 
     }
 
