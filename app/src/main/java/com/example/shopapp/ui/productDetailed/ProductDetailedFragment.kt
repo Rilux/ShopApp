@@ -1,7 +1,6 @@
 package com.example.shopapp.ui.productDetailed
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import com.bumptech.glide.Glide
 import com.example.shopapp.R
 import com.example.shopapp.data.local.Product
 import com.example.shopapp.databinding.FragmentProductDetailedBinding
@@ -19,7 +19,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class ProductDetailedFragment : Fragment(R.layout.fragment_product_detailed) {
 
     private lateinit var binding: FragmentProductDetailedBinding
-    val viewModel : ProductDetailedFragmentViewModel by viewModels()
+    val viewModel: ProductDetailedFragmentViewModel by viewModels()
     val sharedViewModel: SharedViewModel by activityViewModels()
 
     override fun onCreateView(
@@ -29,15 +29,22 @@ class ProductDetailedFragment : Fragment(R.layout.fragment_product_detailed) {
         binding = FragmentProductDetailedBinding.inflate(layoutInflater)
         val view = binding.root
 
-/*        sharedViewModel.chosenProductForDetails.observe(viewLifecycleOwner, Observer {
-            Log.d("MyLog", it.toString())
-        })*/
+        sharedViewModel.chosenProductForDetails.observe(viewLifecycleOwner, Observer {
+            draw(it)
+        })
 
         return view
     }
 
-    fun draw(product: Product){
+    private fun draw(product: Product) {
+        Glide.with(binding.imageView)
+            .load(product.image)
+            .into(binding.imageView)
 
+        binding.textViewTitle.text = product.title
+        binding.ratingBar.rating = product.rating.toFloat()
+        binding.textViewPrice.text = product.price.toString()
+        binding.textViewDescription.text = product.description
     }
 
 }
