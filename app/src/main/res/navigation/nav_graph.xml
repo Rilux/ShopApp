@@ -34,5 +34,13 @@
         <action
             android:id="@+id/action_rootFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_rootFragment_to_productDetailedFragment"
+            app:destination="@id/productDetailedFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/productDetailedFragment"
+        android:name="com.example.shopapp.ui.productDetailed.ProductDetailedFragment"
+        android:label="fragment_product_detailed"
+        tools:layout="@layout/fragment_product_detailed" />
 </navigation>
