@@ -4,7 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.shopapp.ui.cart.CartFragment
-import com.example.shopapp.ui.catalogue.CatalogueFragment
+import com.example.shopapp.ui.catalogue.CatalogueBaseFragment
 import com.example.shopapp.ui.main.MainPageFragment
 
 class RootFragmentViewPagerAdapter(fragmentActivity: FragmentActivity) :
@@ -14,7 +14,7 @@ class RootFragmentViewPagerAdapter(fragmentActivity: FragmentActivity) :
     override fun createFragment(position: Int): Fragment =
         when (position) {
             0 -> MainPageFragment()
-            1 -> CatalogueFragment()
+            1 -> CatalogueBaseFragment()
             else -> CartFragment()
         }
 }

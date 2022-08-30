@@ -21,6 +21,7 @@ class ProductDetailedFragment : Fragment(R.layout.fragment_product_detailed) {
     private lateinit var binding: FragmentProductDetailedBinding
     val viewModel: ProductDetailedFragmentViewModel by viewModels()
     val sharedViewModel: SharedViewModel by activityViewModels()
+    lateinit var currentProduct: Product
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,8 +31,13 @@ class ProductDetailedFragment : Fragment(R.layout.fragment_product_detailed) {
         val view = binding.root
 
         sharedViewModel.chosenProductForDetails.observe(viewLifecycleOwner, Observer {
-            draw(it)
+            currentProduct = it
+            draw(currentProduct)
         })
+
+        binding.buttonAddToCart.setOnClickListener{
+            sharedViewModel.addProductToTheCart(currentProduct)
+        }
 
         return view
     }
