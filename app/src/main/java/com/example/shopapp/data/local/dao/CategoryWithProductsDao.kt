@@ -1,5 +1,6 @@
 package com.example.shopapp.data.local.dao
 
+import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -7,6 +8,7 @@ import com.example.shopapp.data.local.entities.Category
 import com.example.shopapp.data.local.entities.Product
 import com.example.shopapp.data.local.entities.relations.CategoryWithProducts
 
+@Dao
 interface CategoryWithProductsDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
