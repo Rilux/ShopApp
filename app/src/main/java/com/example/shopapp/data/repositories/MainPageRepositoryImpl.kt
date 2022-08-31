@@ -1,12 +1,11 @@
 package com.example.shopapp.data.repositories
 
-import com.example.shopapp.data.local.Product
-import com.example.shopapp.data.local.ProductDao
+import com.example.shopapp.data.local.entities.Product
+import com.example.shopapp.data.local.dao.ProductDao
 import com.example.shopapp.data.model.product.Productslist
 import com.example.shopapp.data.remote.ApiService
 import com.example.shopapp.repository.MainPageRepository
 import com.example.shopapp.utils.extensions.ToProduct
-import com.example.shopapp.utils.extensions.ToProductArray
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import retrofit2.Response

@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.shopapp.R
-import com.example.shopapp.data.local.Product
+import com.example.shopapp.data.local.entities.Product
 import com.example.shopapp.databinding.ItemProductBinding
 import kotlinx.android.synthetic.main.item_product.view.*
 

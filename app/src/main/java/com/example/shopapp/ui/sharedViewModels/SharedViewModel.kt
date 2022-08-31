@@ -3,7 +3,7 @@ package com.example.shopapp.ui.sharedViewModels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.shopapp.data.local.Product
+import com.example.shopapp.data.local.entities.Product
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

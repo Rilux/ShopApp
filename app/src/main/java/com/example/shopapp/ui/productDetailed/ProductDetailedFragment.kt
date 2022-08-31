@@ -10,7 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.example.shopapp.R
-import com.example.shopapp.data.local.Product
+import com.example.shopapp.data.local.entities.Product
 import com.example.shopapp.databinding.FragmentProductDetailedBinding
 import com.example.shopapp.ui.sharedViewModels.SharedViewModel
 import dagger.hilt.android.AndroidEntryPoint

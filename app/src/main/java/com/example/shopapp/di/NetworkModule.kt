@@ -1,7 +1,7 @@
 package com.example.shopapp.di
 
 import com.example.shopapp.BuildConfig
-import com.example.shopapp.data.local.ProductDao
+import com.example.shopapp.data.local.dao.ProductDao
 import com.example.shopapp.data.remote.ApiService
 import com.example.shopapp.data.repositories.MainPageRepositoryImpl
 import com.example.shopapp.repository.MainPageRepository

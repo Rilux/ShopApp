@@ -1,6 +1,6 @@
 package com.example.shopapp.utils.extensions
 
-import com.example.shopapp.data.local.Product
+import com.example.shopapp.data.local.entities.Product
 import com.example.shopapp.data.model.product.Productslist
 import com.example.shopapp.data.model.product.ProductslistItem
 

@@ -1,4 +1,4 @@
-package com.example.shopapp.data.local
+package com.example.shopapp.data.local.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -10,7 +10,7 @@ data class Product(
     val title: String,
     val price: Double,
     val description: String,
-    val category: String,
+    val categoryName: String,
     val image: String,
     val rating: Double,
     val ratingCount: Int

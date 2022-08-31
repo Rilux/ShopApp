@@ -1,6 +1,7 @@
-package com.example.shopapp.data.local
+package com.example.shopapp.data.local.dao
 
 import androidx.room.*
+import com.example.shopapp.data.local.entities.Product
 
 @Dao
 interface ProductDao {

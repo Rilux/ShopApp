@@ -14,7 +14,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shopapp.R
-import com.example.shopapp.data.local.Product
+import com.example.shopapp.data.local.entities.Product
 import com.example.shopapp.databinding.FragmentMainPageBinding
 import com.example.shopapp.ui.sharedViewModels.SharedViewModel
 import com.example.shopapp.utils.extensions.GridSpacingItemDecoration
