@@ -9,7 +9,9 @@ import androidx.fragment.app.FragmentManager
 import com.example.shopapp.R
 import com.example.shopapp.databinding.FragmentCatalogueBinding
 import com.example.shopapp.ui.registration.RegistrationFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CatalogueBaseFragment : Fragment(R.layout.fragment_catalogue) {
 
     lateinit var binding: FragmentCatalogueBinding
@@ -22,11 +24,8 @@ class CatalogueBaseFragment : Fragment(R.layout.fragment_catalogue) {
         val view = binding.root
 
         parentFragmentManager.beginTransaction()
-            .add(R.id.fragment_container_view_tag, RegistrationFragment())
+            .add(R.id.fragment_container_view_tag, CatalogueCategoriesListFragment())
             .commit()
-
-
-
 
         return view
     }

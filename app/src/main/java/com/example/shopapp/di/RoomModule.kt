@@ -26,4 +26,9 @@ object RoomModule {
     @Provides
     @Singleton
     fun provideProductDao(db: AppDatabase) = db.productsDao()
+
+    @Provides
+    @Singleton
+    fun provideCategoryWithProductsDao(db: AppDatabase) = db.categoryWithProductsDao()
+
 }

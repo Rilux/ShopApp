@@ -11,7 +11,7 @@ import javax.inject.Named
 
 @HiltViewModel
 class MainPageFragmentViewModel @Inject constructor(
-    @Named("MainPageRepository") private val repo: MainPageRepository
+    private val repo: MainPageRepository
 ) : ViewModel() {
 
     private var _productslist = MutableLiveData<List<Product>>()

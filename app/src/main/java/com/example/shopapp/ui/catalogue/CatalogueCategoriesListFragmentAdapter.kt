@@ -5,17 +5,18 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.shopapp.data.local.entities.Category
 import com.example.shopapp.databinding.ItemCategoryBinding
 import kotlinx.android.synthetic.main.item_category.view.*
 
 class CatalogueCategoriesListFragmentAdapter :
-    ListAdapter<String, CatalogueCategoriesListFragmentAdapter.CatalogueCategoriesListFragmentViewHolder>(
+    ListAdapter<Category, CatalogueCategoriesListFragmentAdapter.CatalogueCategoriesListFragmentViewHolder>(
         Comparator()
     ) {
     class CatalogueCategoriesListFragmentViewHolder(binding: ItemCategoryBinding) :
         RecyclerView.ViewHolder(binding.root)
 
-    private var categoryList = emptyList<String>()
+    private var categoryList = emptyList<Category>()
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -33,29 +34,29 @@ class CatalogueCategoriesListFragmentAdapter :
         position: Int
     ) {
         val category = categoryList[position]
-        holder.itemView.TextCategory.text = category
+        holder.itemView.TextCategory.text = category.categoryName
     }
 
     override fun getItemCount(): Int = categoryList.size
 
-    fun setList(list: List<String>) {
+    fun setList(list: List<Category>) {
         categoryList = list
         notifyDataSetChanged()
     }
 
-    class Comparator : DiffUtil.ItemCallback<String>() {
+    class Comparator : DiffUtil.ItemCallback<Category>() {
         override fun areItemsTheSame(
-            oldItem: String,
-            newItem: String
+            oldItem: Category,
+            newItem: Category
         ): Boolean {
-            return oldItem == newItem
+            return oldItem.categoryName == newItem.categoryName
         }
 
         override fun areContentsTheSame(
-            oldItem: String,
-            newItem: String
+            oldItem: Category,
+            newItem: Category
         ): Boolean {
-            return oldItem == newItem
+            return oldItem.categoryName == newItem.categoryName
         }
 
     }

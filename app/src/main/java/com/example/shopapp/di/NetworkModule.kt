@@ -1,6 +1,7 @@
 package com.example.shopapp.di
 
 import com.example.shopapp.BuildConfig
+import com.example.shopapp.data.local.dao.CategoryWithProductsDao
 import com.example.shopapp.data.local.dao.ProductDao
 import com.example.shopapp.data.remote.ApiService
 import com.example.shopapp.data.repositories.MainPageRepositoryImpl
@@ -20,14 +21,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
-
-    @Provides
-    @Singleton
-    @Named("MainPageRepository")
-    fun provideMainPageRepository(
-        apiService: ApiService,
-        productDao: ProductDao
-    ): MainPageRepository = MainPageRepositoryImpl(apiService, productDao)
 
     @Provides
     @Singleton

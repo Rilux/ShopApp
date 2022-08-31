@@ -16,7 +16,6 @@ interface MainPageActionListener{
 
     fun onAddToCartClicked(product: Product)
     fun onDetailedViewClicked(product: Product)
-
 }
 
 class MainPageFragmentAdapter(
