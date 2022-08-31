@@ -5,10 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.FragmentManager
 import com.example.shopapp.R
 import com.example.shopapp.databinding.FragmentCatalogueBinding
-import com.example.shopapp.ui.registration.RegistrationFragment
+import com.example.shopapp.ui.catalogue.categoryList.CatalogueCategoriesListFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

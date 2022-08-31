@@ -1,18 +1,28 @@
-package com.example.shopapp.ui.catalogue
+package com.example.shopapp.ui.catalogue.categoryList
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.shopapp.R
 import com.example.shopapp.data.local.entities.Category
 import com.example.shopapp.databinding.ItemCategoryBinding
 import kotlinx.android.synthetic.main.item_category.view.*
+import kotlinx.android.synthetic.main.item_product.view.*
 
-class CatalogueCategoriesListFragmentAdapter :
+interface CatalogueCategoriesListAdapterListener {
+    fun onCategoryClicked(category: Category)
+}
+
+class CatalogueCategoriesListFragmentAdapter(
+    private val catalogueActionListener: CatalogueCategoriesListAdapterListener
+) :
     ListAdapter<Category, CatalogueCategoriesListFragmentAdapter.CatalogueCategoriesListFragmentViewHolder>(
         Comparator()
-    ) {
+    ),
+    View.OnClickListener {
     class CatalogueCategoriesListFragmentViewHolder(binding: ItemCategoryBinding) :
         RecyclerView.ViewHolder(binding.root)
 
@@ -25,6 +35,8 @@ class CatalogueCategoriesListFragmentAdapter :
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemCategoryBinding.inflate(inflater, parent, false)
 
+        binding.root.setOnClickListener(this)
+        binding.TextCategory.setOnClickListener(this)
 
         return CatalogueCategoriesListFragmentViewHolder(binding)
     }
@@ -34,6 +46,8 @@ class CatalogueCategoriesListFragmentAdapter :
         position: Int
     ) {
         val category = categoryList[position]
+        holder.itemView.tag = category
+        holder.itemView.TextCategory.tag = category
         holder.itemView.TextCategory.text = category.categoryName
     }
 
@@ -42,6 +56,19 @@ class CatalogueCategoriesListFragmentAdapter :
     fun setList(list: List<Category>) {
         categoryList = list
         notifyDataSetChanged()
+    }
+
+    override fun onClick(v: View) {
+        val category = v.tag as Category
+
+        when (v.id) {
+            R.id.TextCategory -> {
+                catalogueActionListener.onCategoryClicked(category)
+            }
+            else -> {
+                catalogueActionListener.onCategoryClicked(category)
+            }
+        }
     }
 
     class Comparator : DiffUtil.ItemCallback<Category>() {

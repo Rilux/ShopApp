@@ -18,11 +18,7 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val callback = requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container_view_tag, RegistrationFragment())
-                .commit()
-        }
+
         return inflater.inflate(R.layout.fragment_login, container, false)
     }
 

@@ -1,4 +1,4 @@
-package com.example.shopapp.ui.catalogue
+package com.example.shopapp.ui.catalogue.categoryList
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

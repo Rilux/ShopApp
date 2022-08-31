@@ -12,8 +12,7 @@ import com.example.shopapp.data.local.entities.Product
 import com.example.shopapp.databinding.ItemProductBinding
 import kotlinx.android.synthetic.main.item_product.view.*
 
-interface MainPageActionListener{
-
+interface MainPageActionListener {
     fun onAddToCartClicked(product: Product)
     fun onDetailedViewClicked(product: Product)
 }
@@ -21,7 +20,10 @@ interface MainPageActionListener{
 class MainPageFragmentAdapter(
     private val actionListener: MainPageActionListener
 ) :
-    ListAdapter<Product, MainPageFragmentAdapter.MainPageFragmentViewHolder>(Comparator()), View.OnClickListener {
+    ListAdapter<Product, MainPageFragmentAdapter.MainPageFragmentViewHolder>(
+        Comparator()
+    ),
+    View.OnClickListener {
     class MainPageFragmentViewHolder(binding: ItemProductBinding) :
         RecyclerView.ViewHolder(binding.root)
 
@@ -57,7 +59,21 @@ class MainPageFragmentAdapter(
         notifyDataSetChanged()
     }
 
+    override fun onClick(v: View) {
+        val product = v.tag as Product
+
+        when (v.id) {
+            R.id.addToCartButton -> {
+                actionListener.onAddToCartClicked(product)
+            }
+            else -> {
+                actionListener.onDetailedViewClicked(product)
+            }
+        }
+    }
+
     class Comparator : DiffUtil.ItemCallback<Product>() {
+
         override fun areItemsTheSame(
             oldItem: Product,
             newItem: Product
@@ -70,20 +86,6 @@ class MainPageFragmentAdapter(
             newItem: Product
         ): Boolean {
             return oldItem.id == newItem.id
-        }
-
-    }
-
-    override fun onClick(v: View) {
-        val product = v.tag as Product
-
-        when(v.id){
-            R.id.addToCartButton -> {
-                actionListener.onAddToCartClicked(product)
-            }
-            else -> {
-                actionListener.onDetailedViewClicked(product)
-            }
         }
     }
 

@@ -24,9 +24,7 @@ class RegistrationFragment : Fragment() {
         val view = binding.root
         binding.buttonRegis.setOnClickListener {
             Log.d("MyLog", "RegisterFragmentButtonClicked")
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container_view_tag, LoginFragment())
-                .commit()
+
         }
 
         return view

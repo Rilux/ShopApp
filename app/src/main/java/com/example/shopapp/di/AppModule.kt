@@ -5,13 +5,14 @@ import com.example.shopapp.data.local.dao.ProductDao
 import com.example.shopapp.data.remote.ApiService
 import com.example.shopapp.data.repositories.CatalogueCategoriesListRepositoryImpl
 import com.example.shopapp.data.repositories.MainPageRepositoryImpl
+import com.example.shopapp.data.repositories.ProductsListByCategoryRepositoryImpl
 import com.example.shopapp.repository.CatalogueCategoriesListRepository
 import com.example.shopapp.repository.MainPageRepository
+import com.example.shopapp.repository.ProductsListByCategoryRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
@@ -32,4 +33,9 @@ object AppModule {
         categoryWithProductsDao: CategoryWithProductsDao
     ): CatalogueCategoriesListRepository = CatalogueCategoriesListRepositoryImpl(categoryWithProductsDao)
 
+    @Provides
+    @Singleton
+    fun ProductsListByCategoryRepository(
+        categoryWithProductsDao: CategoryWithProductsDao
+    ): ProductsListByCategoryRepository = ProductsListByCategoryRepositoryImpl(categoryWithProductsDao)
 }
