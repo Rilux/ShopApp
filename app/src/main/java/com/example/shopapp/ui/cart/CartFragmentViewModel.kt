@@ -18,9 +18,5 @@ class CartFragmentViewModel @Inject constructor(
     private var _cartProducts = MutableLiveData<List<CartProduct>>()
     val cartProducts: LiveData<List<CartProduct>> = _cartProducts
 
-    fun getProductsInCart(){
-        viewModelScope.launch {
-            _cartProducts.value = repo.getProductInCart()
-        }
-    }
+
 }

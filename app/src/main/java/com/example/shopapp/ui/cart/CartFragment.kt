@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shopapp.R
@@ -15,6 +16,7 @@ import com.example.shopapp.data.local.entities.CartProduct
 import com.example.shopapp.databinding.FragmentCartBinding
 import com.example.shopapp.ui.sharedViewModels.SharedViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class CartFragment : Fragment(R.layout.fragment_cart) {
@@ -35,11 +37,12 @@ class CartFragment : Fragment(R.layout.fragment_cart) {
         binding = FragmentCartBinding.inflate(layoutInflater)
         val view = binding.root
         drawRecyclerView()
-        viewModel.getProductsInCart()
-        viewModel.cartProducts.observe(viewLifecycleOwner, Observer {
+        lifecycleScope.launch {
+            sharedViewModel.getProductInCart()
+        }
+        sharedViewModel.productsInCart.observe(viewLifecycleOwner, Observer {
             adapter.setList(it)
         })
-
         return view
     }
 

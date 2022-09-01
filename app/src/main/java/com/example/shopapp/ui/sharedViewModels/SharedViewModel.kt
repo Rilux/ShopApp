@@ -3,6 +3,7 @@ package com.example.shopapp.ui.sharedViewModels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.shopapp.data.local.entities.CartProduct
 import com.example.shopapp.data.local.entities.Category
 import com.example.shopapp.data.local.entities.Product
 import com.example.shopapp.repository.ProductDetailedRepository
@@ -23,6 +24,9 @@ class SharedViewModel @Inject constructor(
     private var _chosenCategory = MutableLiveData<Category>()
     val chosenCategory: LiveData<Category> = _chosenCategory
 
+    private var _productsInCart = MutableLiveData<List<CartProduct>>()
+    val productsInCart: LiveData<List<CartProduct>> = _productsInCart
+
     fun setChosenProduct(product: Product) {
         _chosenProductForDetails.value = product
     }
@@ -31,7 +35,12 @@ class SharedViewModel @Inject constructor(
         _chosenCategory.value = category
     }
 
-    suspend fun addToCart(product: Product){
+    suspend fun addToCart(product: Product) {
         repo.addProductToCart(product.ToCartProduct())
+        _productsInCart.value = repo.getProductInCart()
+    }
+
+    suspend fun getProductInCart() {
+        _productsInCart.value = repo.getProductInCart()
     }
 }
