@@ -27,7 +27,7 @@ import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class ProductListByCategoryFragment : Fragment(R.layout.fragment_product_list_by_category) {
-    lateinit var binding: FragmentProductListByCategoryBinding
+    private lateinit var binding: FragmentProductListByCategoryBinding
 
     private lateinit var adapter: MainPageFragmentAdapter
     private lateinit var recyclerview: RecyclerView
@@ -53,7 +53,7 @@ class ProductListByCategoryFragment : Fragment(R.layout.fragment_product_list_by
             adapter.setList(it)
         })
 
-        val callback = requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
             parentFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container_view_tag, CatalogueCategoriesListFragment())
                 .commit()
@@ -67,7 +67,9 @@ class ProductListByCategoryFragment : Fragment(R.layout.fragment_product_list_by
         recyclerview = binding.recyclerViewProductsListByCategory
         adapter = MainPageFragmentAdapter(object : MainPageActionListener {
             override fun onAddToCartClicked(product: Product) {
-                sharedViewModel.addProductToTheCart(product)
+                lifecycleScope.launch {
+                    sharedViewModel.addToCart(product)
+                }
             }
 
             override fun onDetailedViewClicked(product: Product) {

@@ -23,7 +23,7 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class CatalogueCategoriesListFragment : Fragment() {
 
-    lateinit var binding: FragmentCatalogueCategoriesListBinding
+    private lateinit var binding: FragmentCatalogueCategoriesListBinding
     private val viewModel: CatalogueCategoriesListFragmentViewModel by viewModels()
     private val sharedViewModel: SharedViewModel by activityViewModels()
 

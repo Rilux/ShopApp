@@ -31,4 +31,8 @@ object RoomModule {
     @Singleton
     fun provideCategoryWithProductsDao(db: AppDatabase) = db.categoryWithProductsDao()
 
+    @Provides
+    @Singleton
+    fun provideCartProductDao(db: AppDatabase) = db.cartProductDao()
+
 }

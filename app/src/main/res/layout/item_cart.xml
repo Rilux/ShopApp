@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:background="@drawable/back">
+
+    <ImageView
+        android:id="@+id/imageViewCartProductImage"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/textViewCartProductName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:lines="2"
+        android:text="Test 1 test big test L"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/imageViewCartProductImage"
+        app:layout_constraintTop_toTopOf="@+id/imageViewCartProductImage"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textViewCartProductPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="0"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textViewCartNumberOfProducts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center|center_horizontal|center_vertical"
+        android:text="0"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewCartProductImage"
+        app:layout_constraintStart_toStartOf="@+id/imageViewCartProductImage"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewCartProductImage"
+        app:layout_constraintVertical_bias="0.499" />
+
+    <ImageView
+        android:id="@+id/imageButtonIncrease"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="18dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewCartNumberOfProducts"
+        app:layout_constraintStart_toEndOf="@+id/textViewCartNumberOfProducts"
+        app:layout_constraintTop_toTopOf="@+id/textViewCartNumberOfProducts"
+        app:srcCompat="@drawable/ic_plus" />
+
+    <ImageView
+        android:id="@+id/imageButtonDecrease"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginEnd="18dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewCartNumberOfProducts"
+        app:layout_constraintEnd_toStartOf="@+id/textViewCartNumberOfProducts"
+        app:layout_constraintTop_toTopOf="@+id/textViewCartNumberOfProducts"
+        app:srcCompat="@drawable/ic_minus" />
+</androidx.constraintlayout.widget.ConstraintLayout>

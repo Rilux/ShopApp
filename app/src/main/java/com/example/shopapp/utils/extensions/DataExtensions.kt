@@ -1,5 +1,6 @@
 package com.example.shopapp.utils.extensions
 
+import com.example.shopapp.data.local.entities.CartProduct
 import com.example.shopapp.data.local.entities.Product
 import com.example.shopapp.data.model.product.Productslist
 import com.example.shopapp.data.model.product.ProductslistItem
@@ -24,3 +25,11 @@ fun Productslist.ToProductArray(): List<Product> {
 
     return tempList
 }
+
+fun Product.ToCartProduct() = CartProduct(
+    id,
+    title,
+    price,
+    image,
+    1
+)

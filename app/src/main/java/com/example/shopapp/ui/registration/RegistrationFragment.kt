@@ -14,7 +14,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class RegistrationFragment : Fragment() {
 
-    lateinit var binding: FragmentRegistrationBinding
+    private lateinit var binding: FragmentRegistrationBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

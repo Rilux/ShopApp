@@ -24,4 +24,5 @@ class MainPageFragmentViewModel @Inject constructor(
             _productslist.value = it
         }
     }
+
 }

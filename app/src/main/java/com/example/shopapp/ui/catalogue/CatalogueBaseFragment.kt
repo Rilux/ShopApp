@@ -13,7 +13,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class CatalogueBaseFragment : Fragment(R.layout.fragment_catalogue) {
 
-    lateinit var binding: FragmentCatalogueBinding
+    private lateinit var binding: FragmentCatalogueBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

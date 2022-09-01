@@ -5,18 +5,20 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.shopapp.data.local.entities.Category
 import com.example.shopapp.data.local.entities.Product
+import com.example.shopapp.repository.ProductDetailedRepository
+import com.example.shopapp.utils.extensions.ToCartProduct
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 
 @HiltViewModel
-class SharedViewModel @Inject constructor() : ViewModel() {
+class SharedViewModel @Inject constructor(
+    private val repo: ProductDetailedRepository
+) : ViewModel() {
 
     private var _chosenProductForDetails = MutableLiveData<Product>()
     val chosenProductForDetails: LiveData<Product> = _chosenProductForDetails
 
-    private var _productsInCart = MutableLiveData<MutableList<Product>>()
-    val productsInCart: LiveData<MutableList<Product>> = _productsInCart
 
     private var _chosenCategory = MutableLiveData<Category>()
     val chosenCategory: LiveData<Category> = _chosenCategory
@@ -25,25 +27,11 @@ class SharedViewModel @Inject constructor() : ViewModel() {
         _chosenProductForDetails.value = product
     }
 
-    fun addProductToTheCart(product: Product) {
-        if (_productsInCart.value != null) {
-            _productsInCart.value?.add(product)
-        } else {
-            val mutableTemp = mutableListOf<Product>()
-            mutableTemp.add(product)
-            _productsInCart.value = mutableTemp
-        }
-    }
-
-    fun deleteProductFromCart(product: Product) {
-        _productsInCart.value?.remove(product)
-    }
-
-    fun cleanCart() {
-        _productsInCart.value?.clear()
-    }
-
     fun setCategory(category: Category) {
         _chosenCategory.value = category
+    }
+
+    suspend fun addToCart(product: Product){
+        repo.addProductToCart(product.ToCartProduct())
     }
 }

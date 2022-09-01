@@ -25,8 +25,8 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class MainPageFragment : Fragment(R.layout.fragment_main_page) {
     private lateinit var binding: FragmentMainPageBinding
-    val viewModel: MainPageFragmentViewModel by viewModels()
-    val sharedViewModel: SharedViewModel by activityViewModels()
+    private val viewModel: MainPageFragmentViewModel by viewModels()
+    private val sharedViewModel: SharedViewModel by activityViewModels()
 
     private lateinit var adapter: MainPageFragmentAdapter
     private lateinit var recyclerview: RecyclerView
@@ -56,7 +56,9 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
         recyclerview = binding.recyclerView
         adapter =  MainPageFragmentAdapter(object : MainPageActionListener {
             override fun onAddToCartClicked(product: Product) {
-                sharedViewModel.addProductToTheCart(product)
+                lifecycleScope.launch{
+                    sharedViewModel.addToCart(product)
+                }
             }
 
             override fun onDetailedViewClicked(product: Product) {
