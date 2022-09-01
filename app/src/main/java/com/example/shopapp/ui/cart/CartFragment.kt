@@ -9,6 +9,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shopapp.R
@@ -52,17 +53,20 @@ class CartFragment : Fragment(R.layout.fragment_cart) {
         adapter =
             CartFragmentAdapter(object : CartFragmentAdapterListener {
                 override fun onIncreaseClicked(product: CartProduct) {
-                    TODO("Not yet implemented")
+                    sharedViewModel.changeNumberOfProductsInCart(product.numberOfProducts + 1, product.id)
                 }
 
                 override fun onDecreaseClicked(product: CartProduct) {
-                    TODO("Not yet implemented")
+                    sharedViewModel.changeNumberOfProductsInCart(product.numberOfProducts - 1, product.id)
                 }
 
                 override fun onProductClicked(product: CartProduct) {
-                    TODO("Not yet implemented")
+                    viewModel.getProductById(product.id)
+                    viewModel.cartProducts.observe(viewLifecycleOwner, Observer {
+                        sharedViewModel.setChosenProduct(it)
+                        findNavController().navigate(R.id.action_rootFragment_to_productDetailedFragment)
+                    })
                 }
-
             })
         recyclerview.adapter = adapter
         recyclerview.layoutManager = LinearLayoutManager(context)

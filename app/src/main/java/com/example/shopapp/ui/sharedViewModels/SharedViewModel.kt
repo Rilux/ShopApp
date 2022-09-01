@@ -3,12 +3,14 @@ package com.example.shopapp.ui.sharedViewModels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.shopapp.data.local.entities.CartProduct
 import com.example.shopapp.data.local.entities.Category
 import com.example.shopapp.data.local.entities.Product
 import com.example.shopapp.repository.ProductDetailedRepository
 import com.example.shopapp.utils.extensions.ToCartProduct
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
@@ -42,5 +44,12 @@ class SharedViewModel @Inject constructor(
 
     suspend fun getProductInCart() {
         _productsInCart.value = repo.getProductInCart()
+    }
+
+    fun changeNumberOfProductsInCart(newNumber: Int, id: Int){
+        viewModelScope.launch {
+            repo.changeNumberOfProducts(newNumber, id)
+            _productsInCart.value = repo.getProductInCart()
+        }
     }
 }

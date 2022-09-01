@@ -21,4 +21,12 @@ class ProductDetailedRepositoryImpl @Inject constructor(
 
     override suspend fun getProductInCart(): List<CartProduct> = cartProductDao.getCartProducts()
 
+    override suspend fun changeNumberOfProducts(number: Int, id: Int) {
+        if (number <= 0){
+            cartProductDao.deleteCartProductById(id)
+        }else{
+            cartProductDao.updateCartProduct(number, id)
+        }
+    }
+
 }

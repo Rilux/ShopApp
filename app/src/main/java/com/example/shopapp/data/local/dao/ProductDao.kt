@@ -9,8 +9,11 @@ interface ProductDao {
     suspend fun getAllProducts(): List<Product>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAll( product: Product)
+    suspend fun insertAll(product: Product)
 
     @Delete
     suspend fun deleteProduct(vararg product: Product)
+
+    @Query("Select * From product Where id = :id")
+    suspend fun getProductById(id: Int): Product
 }

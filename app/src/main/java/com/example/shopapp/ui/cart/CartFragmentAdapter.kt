@@ -48,7 +48,7 @@ class CartFragmentAdapter(
             .into(holder.itemView.imageViewCartProductImage)
 
         holder.itemView.textViewCartProductName.text = product.name
-        holder.itemView.textViewCartProductPrice.text = product.price.toString() + "$"
+        holder.itemView.textViewCartProductPrice.text = (product.price * product.numberOfProducts).toString() + "$"
         holder.itemView.textViewCartNumberOfProducts.text = product.numberOfProducts.toString()
     }
 

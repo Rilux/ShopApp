@@ -4,14 +4,8 @@ import com.example.shopapp.data.local.dao.CartProductDao
 import com.example.shopapp.data.local.dao.CategoryWithProductsDao
 import com.example.shopapp.data.local.dao.ProductDao
 import com.example.shopapp.data.remote.ApiService
-import com.example.shopapp.data.repositories.CatalogueCategoriesListRepositoryImpl
-import com.example.shopapp.data.repositories.MainPageRepositoryImpl
-import com.example.shopapp.data.repositories.ProductDetailedRepositoryImpl
-import com.example.shopapp.data.repositories.ProductsListByCategoryRepositoryImpl
-import com.example.shopapp.repository.CatalogueCategoriesListRepository
-import com.example.shopapp.repository.MainPageRepository
-import com.example.shopapp.repository.ProductDetailedRepository
-import com.example.shopapp.repository.ProductsListByCategoryRepository
+import com.example.shopapp.data.repositories.*
+import com.example.shopapp.repository.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -47,4 +41,10 @@ object AppModule {
     fun provideProductDetailedRepository(
         cartProductDao: CartProductDao
     ): ProductDetailedRepository = ProductDetailedRepositoryImpl(cartProductDao)
+
+    @Provides
+    @Singleton
+    fun provideCartRepository(
+        productDao: ProductDao
+    ): CartRepository = CartRepositoryImpl(productDao)
 }
