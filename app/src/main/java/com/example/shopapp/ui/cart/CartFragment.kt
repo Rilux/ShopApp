@@ -64,7 +64,10 @@ class CartFragment : Fragment(R.layout.fragment_cart) {
                     viewModel.getProductById(product.id)
                     viewModel.cartProducts.observe(viewLifecycleOwner, Observer {
                         sharedViewModel.setChosenProduct(it)
-                        findNavController().navigate(R.id.action_rootFragment_to_productDetailedFragment)
+                        if(findNavController().currentDestination?.id==R.id.rootFragment)
+                            findNavController().navigate(
+                                R.id.action_rootFragment_to_productDetailedFragment
+                            )
                     })
                 }
             })

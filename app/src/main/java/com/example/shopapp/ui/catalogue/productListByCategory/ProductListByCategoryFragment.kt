@@ -6,10 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.addCallback
+import androidx.annotation.IdRes
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -74,6 +76,7 @@ class ProductListByCategoryFragment : Fragment(R.layout.fragment_product_list_by
 
             override fun onDetailedViewClicked(product: Product) {
                 sharedViewModel.setChosenProduct(product)
+
                 findNavController().navigate(R.id.action_rootFragment_to_productDetailedFragment)
             }
 

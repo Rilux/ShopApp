@@ -8,13 +8,15 @@ import androidx.room.migration.AutoMigrationSpec
 import com.example.shopapp.data.local.dao.CartProductDao
 import com.example.shopapp.data.local.dao.CategoryWithProductsDao
 import com.example.shopapp.data.local.dao.ProductDao
+import com.example.shopapp.data.local.dao.UserDao
 import com.example.shopapp.data.local.entities.CartProduct
 import com.example.shopapp.data.local.entities.Category
 import com.example.shopapp.data.local.entities.Product
+import com.example.shopapp.data.local.entities.User
 
 
 @Database(
-    entities = [Product::class, Category::class, CartProduct::class], version = 4,
+    entities = [Product::class, Category::class, CartProduct::class, User::class], version = 5,
     autoMigrations = [
         AutoMigration(
             from = 1,
@@ -29,6 +31,10 @@ import com.example.shopapp.data.local.entities.Product
         AutoMigration(
             from = 3,
             to = 4
+        ),
+        AutoMigration(
+            from = 4,
+            to = 5
         )
     ], exportSchema = true
 )
@@ -36,6 +42,7 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun productsDao(): ProductDao
     abstract fun categoryWithProductsDao(): CategoryWithProductsDao
     abstract fun cartProductDao(): CartProductDao
+    abstract fun userDao(): UserDao
 
     @RenameColumn(
         tableName = "Product",
